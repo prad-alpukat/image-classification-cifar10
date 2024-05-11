@@ -19,11 +19,11 @@ for i in range(16):
     plt.xlabel(class_name[training_labels[i][0]])
 plt.show()
 
-# # (optional) membatasi jumlah training data untuk mempercepat proses training
-# training_images = training_images[:20000]
-# training_labels = training_labels[:20000]
-# testing_images = testing_images[:4000]
-# testing_labels = testing_labels[:4000]
+# (optional) membatasi jumlah training data untuk mempercepat proses training
+training_images = training_images[:20000]
+training_labels = training_labels[:20000]
+testing_images = testing_images[:4000]
+testing_labels = testing_labels[:4000]
 
 # jika ada model.keras yang sudah ada, maka load model tersebut
 try:
