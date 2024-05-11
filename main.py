@@ -19,11 +19,11 @@ for i in range(16):
     plt.xlabel(class_name[training_labels[i][0]])
 plt.show()
 
-# (optional) membatasi jumlah training data untuk mempercepat proses training
-training_images = training_images[:20000]
-training_labels = training_labels[:20000]
-testing_images = testing_images[:4000]
-testing_labels = testing_labels[:4000]
+# # (optional) membatasi jumlah training data untuk mempercepat proses training
+# training_images = training_images[:20000]
+# training_labels = training_labels[:20000]
+# testing_images = testing_images[:4000]
+# testing_labels = testing_labels[:4000]
 
 # jika ada model.keras yang sudah ada, maka load model tersebut
 try:
@@ -45,9 +45,7 @@ except:
 
     # menambahkan layer dense untuk menghubungkan hasil dari layer conv ke output layer
     model.add(layers.Dense(64, activation='relu'))
-
-    # hasil dari output layer adalah 10, karena terdapat 10 class pada dataset cifar10
-    model.add(layers.Dense(10), activation='softmax')   
+    model.add(layers.Dense(10))
 
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
@@ -72,8 +70,8 @@ print(test_acc)
 
 # membuat prediksi
 predictions = model.predict(testing_images)
-for i in range(16):
-    plt.subplot(4, 4, i + 1)
+for i in range(100):
+    plt.subplot(10, 10, i + 1)
     plt.xticks([])
     plt.yticks([])
     plt.imshow(testing_images[i], cmap=plt.cm.binary)
